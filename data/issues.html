@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GitHub Issues</title>
+  <style>
+    body {
+      background-color: #fff;
+      color: #000;
+      padding: 0;
+      margin: 0;
+      font-size: 100%;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.5em;
+      padding: .5em;
+      border-bottom: 1px solid #ccc;
+    }
+
+    ul, li {
+      margin: 0;
+      padding: 0;
+    }
+
+    #issues {
+      padding: .5em;
+    }
+
+    #issues > li {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-size: 0.9em;
+      padding: 0.25em;
+    }
+
+    a {
+      color: #549FDC;
+      text-decoration: none;
+    }
+
+    .styles, .styles > li {
+      display: inline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>GitHub Issues</h1>
+  </header>
+
+  <ul id="issues">
+  </ul>
+
+  <script id="templateIssue" type="text/html">
+    {{#issues}}
+      <li>
+          <a href="{{html_url}}" title="{{title}}">
+            ({{number}})
+          </a>
+
+          <span class="assignee">
+            &lt;<a href="https://github.com/{{assignee.login}}">{{assignee.login}}</a>&gt; -
+          </span>
+
+          <ul class="styles">
+            {{#labels}}
+              <li style="color: #{{color}};">{{name}}</li>
+            {{/labels}}
+          </ul> -
+
+          <a class="issue" href="{{html_url}}" title="{{title}}">
+            {{title}}
+          </a>
+      </li>
+    {{/issues}}
+  </script>
+</body>
+</html>
