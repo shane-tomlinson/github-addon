@@ -75,13 +75,13 @@
 
     .assignee {
       float: right;
-      width: 18px;
-      height: 19px;
+      width: 21px;
+      height: 21px;
       border: 1px solid #ddd;
       border-width: 0 0 1px 1px;
       border-radius: 0 0 0 3px;
       margin-top: -5px;
-      padding: 0 0 0 2px;
+      padding: 2px;
     }
 
     .assignee img {
@@ -109,12 +109,35 @@
     }
 
     #next_page {
+      float: left;
+    }
+
+    #next_page {
       float: right;
+    }
+
+    #new_issue {
+      color: #333;
+      line-height: 24px;
+      float: right;
+      border: 1px solid #D4D4D4;
+      border-radius: 3px;
+      background: -moz-linear-gradient(#F4F4F4, #ECECEC) repeat scroll 0 0 transparent;
+      text-transform: capitalize;
+      padding: 0 5px;
+      font-size: 0.7em;
+      font-weight: bold;
+    }
+
+    #new_issue:hover {
+      background: -moz-linear-gradient(#599bdc, #3072b3) repeat scroll 0 0 transparent;
+      color: #fff;
     }
   </style>
 </head>
 <body>
   <header>
+    <a id="new_issue" href="">New Issue</a>
     <h1>GitHub issues for <a href="">Repo</a></h1>
   </header>
 

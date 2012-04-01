@@ -2,6 +2,9 @@ self.port.on("initialize", function(data) {
   var header = document.querySelector("h1 a");
   header.setAttribute("href", "https://github.com/" + data.repo_url);
   header.innerHTML = data.repo_url;
+
+  var newIssue = document.querySelector("#new_issue");
+  newIssue.setAttribute("href", "https://github.com/" + data.repo_url + "/issues/new");
 });
 
 self.port.on("show_issues", function(arg) {
