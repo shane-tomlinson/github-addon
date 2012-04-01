@@ -9,6 +9,23 @@ self.port.on("show_issues", function(arg) {
   attachListeners();
 });
 
+self.port.on("first_page", function() {
+  document.querySelector("body").classList.add("first_page");
+});
+
+self.port.on("not_first_page", function() {
+  document.querySelector("body").classList.remove("first_page");
+});
+
+self.port.on("last_page", function() {
+  document.querySelector("body").classList.add("last_page");
+});
+
+self.port.on("not_last_page", function() {
+  document.querySelector("body").classList.remove("last_page");
+});
+
+
 function displayIssues(issues) {
   var view = { issues: issues };
   var template = document.querySelector("#templateIssue").innerHTML;
@@ -16,11 +33,15 @@ function displayIssues(issues) {
 
   var listEl = document.querySelector("#issues");
   listEl.innerHTML = html;
+  attachListeners(listEl);
+
   window.scrollTo(0, 0);
 }
 
 function attachListeners(listEl) {
-  var anchors = document.querySelectorAll("a");
+  if(!listEl) return;
+
+  var anchors = listEl.querySelectorAll("a");
   var len = anchors.length;
 
   for(var index = 0, anchor; index < len, anchor = anchors[index]; index++) {
@@ -28,6 +49,9 @@ function attachListeners(listEl) {
       event.preventDefault();
       var href = this.getAttribute("href");
       self.port.emit("open_link", { href: href });
+      console.log("click: " + href);
     }.bind(anchor), false);
   }
 }
+
+attachListeners(document);

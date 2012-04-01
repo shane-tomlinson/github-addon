@@ -16,7 +16,7 @@
       font: 100%/1.4 Helvetica,arial,freesans,clean,sans-serif;
     }
 
-    header {
+    header, footer {
       margin: 0;
       border-bottom: 1px solid #cacaca;
       background: -moz-linear-gradient(#FAFAFA, #EAEAEA) repeat scroll 0 0 transparent;
@@ -32,8 +32,13 @@
       font-size: 1.3em;
     }
 
-    h1 > a {
+    a {
       color: #4183c4;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
 
     ul, li {
@@ -58,11 +63,7 @@
       background-color: #ffffcc;
     }
 
-    a {
-      text-decoration: none;
-    }
-
-    .labels > li {
+    .labels > li, footer li {
       display: inline;
     }
 
@@ -102,6 +103,14 @@
     .title:hover {
       text-decoration: underline;
     }
+
+    .first_page #prev_page, .last_page #next_page {
+      visibility: hidden;
+    }
+
+    #next_page {
+      float: right;
+    }
   </style>
 </head>
 <body>
@@ -139,7 +148,11 @@
       </li>
     {{/issues}}
 
-    <a href="#prev_page">Prev Page</a> <a href="#next_page">Next Page</a>
+    <footer>
+      <ul>
+        <li id="prev_page"><a href="#prev_page">Prev Page</a></li>
+        <li id="next_page"><a href="#next_page">Next Page</a></li>
+    </footer>
   </script>
 </body>
 </html>
