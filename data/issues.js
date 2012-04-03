@@ -41,20 +41,40 @@ function displayIssues(issues) {
   window.scrollTo(0, 0);
 }
 
-function attachListeners(listEl) {
+function attachListeners(listEl, extraListener) {
   if(!listEl) return;
 
   var anchors = listEl.querySelectorAll("a");
   var len = anchors.length;
 
   for(var index = 0, anchor; index < len, anchor = anchors[index]; index++) {
-    anchor.addEventListener("click", function(event) {
+    anchor.addEventListener("click", function(extraListener, event) {
       event.preventDefault();
       var href = this.getAttribute("href");
       self.port.emit("open_link", { href: href });
-      console.log("click: " + href);
-    }.bind(anchor), false);
+      extraListener && extraListener(event);
+    }.bind(anchor, extraListener), false);
   }
 }
 
 attachListeners(document);
+
+self.port.on("show_labels", function(data) {
+  displayLabels(data.labels || []);
+});
+
+function displayLabels(labels) {
+  var view = { labels: labels };
+  var template = document.querySelector("#templateLabels").innerHTML;
+  var html = Mustache.render(template, view);
+
+  var listEl = document.querySelector("#labels");
+  listEl.innerHTML = html;
+
+  attachListeners(listEl, function(event) {
+    var currLabelEl = document.querySelector("#curr_label");
+    currLabelEl.innerHTML = event.currentTarget.innerHTML;
+    currLabelEl.style.color = event.currentTarget.style.color;
+  });
+}
+
