@@ -42,9 +42,32 @@
     }
 
     ul, li {
+      list-style-type: none;
       margin: 0;
       padding: 0;
       list-style-type: none;
+    }
+
+    input[type=search] {
+      display: inline-block;
+      padding: 4px;
+      line-height: 24px;
+      font-size: 100%;
+      border: 1px solid rgb(205, 205, 205);
+      border-radius: 3px;
+      width: 100%;
+      box-shadow: 0px 1px 0px rgb(241, 241, 241), 0px 1px 1px rgb(224, 224, 224) inset;
+      margin-top: 5px;
+      color: rgb(153, 153, 153);
+    }
+
+    input:focus {
+      color: #000;
+    }
+
+    nav > ul > li {
+      clear: both;
+      margin-top: 5px;
     }
 
     .odd {
@@ -118,10 +141,15 @@
       float: right;
     }
 
-    #new_issue {
-      color: #333;
-      line-height: 24px;
+    #new_issue_container {
       float: right;
+    }
+
+    #new_issue {
+      float: right;
+      color: #333;
+      height: 24px;
+      line-height: 24px;
       border: 1px solid #D4D4D4;
       border-radius: 3px;
       background: -moz-linear-gradient(#F4F4F4, #ECECEC) repeat scroll 0 0 transparent;
@@ -159,6 +187,7 @@
     }
 
     #labels > li {
+      padding: 3px;
       font-size: 0.9em;
       border-bottom: 1px solid #EAEAEA;
       color: #888;
@@ -167,6 +196,10 @@
 
     #labels > li:hover {
       background-color: #ffffcc;
+    }
+
+    #labels > li > a {
+      display: block;
     }
 
     #filter:hover #labels {
@@ -178,13 +211,23 @@
   <header>
     <h1>GitHub issues for <a href="">Repo</a></h1>
     <nav>
-      <div id="filter">
-        <h2>Filter: <span id="curr_label">all</span></h2>
-        <ul id="labels">
-        </ul>
-      </div>
+      <ul>
+        <li id="filter">
+          <h2>Filter: <span id="curr_label">all</span></h2>
+          <ul id="labels">
+          </ul>
+        </li>
 
-      <a id="new_issue" href="">New Issue</a>
+        <li id="new_issue_container">
+          <a id="new_issue" href="">New Issue</a>
+        </li>
+
+        <li>
+          <form id="searchform">
+            <input type="search" id="search" placeholder="Search..." />
+          </form>
+        </li>
+      </ul>
     </nav>
   </header>
 

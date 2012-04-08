@@ -44,6 +44,15 @@ function displayIssues(issues) {
 
 attachListeners(document);
 
+var form = document.querySelector("#searchform");
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+  var searchTerm = document.querySelector("#search").value;
+  if(searchTerm) {
+    self.port.emit("search", { search: searchTerm });
+  }
+});
+
 self.port.on("show_labels", function(data) {
   displayLabels(data.labels || []);
 });
