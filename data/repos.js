@@ -9,7 +9,7 @@ function displayRepos(data) {
   var template = document.querySelector("#templateRepos").innerHTML;
   var html = Mustache.render(template, view);
 
-  var listEl = document.querySelector("#repos");
+  var listEl = document.querySelector("#main_list");
   listEl.innerHTML = html;
   attachListeners(listEl);
 

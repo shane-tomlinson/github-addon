@@ -35,7 +35,7 @@ function displayIssues(issues) {
   var template = document.querySelector("#templateIssue").innerHTML;
   var html = Mustache.render(template, view);
 
-  var listEl = document.querySelector("#issues");
+  var listEl = document.querySelector("#main_list");
   listEl.innerHTML = html;
   attachListeners(listEl);
 

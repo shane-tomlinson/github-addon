@@ -1,0 +1,203 @@
+    * {
+      -moz-box-sizing: border-box;
+           box-sizing: border-box;
+    }
+
+    body {
+      background-color: #fff;
+      color: #000;
+      padding: 0;
+      margin: 0;
+      font: 100%/1.4 Helvetica,arial,freesans,clean,sans-serif;
+    }
+
+    header, footer {
+      margin: 0;
+      border-bottom: 1px solid #cacaca;
+      background: -moz-linear-gradient(#FAFAFA, #EAEAEA) repeat scroll 0 0 transparent;
+      padding: .5em;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4), 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 1.3em;
+    }
+
+    a {
+      color: #4183c4;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ul, li {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+
+    input[type=search] {
+      display: inline-block;
+      padding: 4px;
+      line-height: 24px;
+      font-size: 100%;
+      border: 1px solid rgb(205, 205, 205);
+      border-radius: 3px;
+      width: 100%;
+      box-shadow: 0px 1px 0px rgb(241, 241, 241), 0px 1px 1px rgb(224, 224, 224) inset;
+      margin-top: 5px;
+      color: rgb(153, 153, 153);
+    }
+
+    input:focus {
+      color: #000;
+    }
+
+    nav > ul > li {
+      clear: both;
+      margin-top: 5px;
+    }
+
+    .odd {
+      background-color: #F9F9F9;
+    }
+
+
+    #main_list > li {
+      font-size: 0.9em;
+      padding: 5px 0 5px 10px;
+      border-bottom: 1px solid #EAEAEA;
+      color: #888;
+      clear: both;
+      width: 100%;
+    }
+
+    #main_list > li:hover {
+      background-color: #ffffcc;
+    }
+
+    .labels > li, footer li {
+      display: inline;
+    }
+
+    .issue_number {
+      color: #888;
+      width: 45px;
+      float: left;
+    }
+
+    .assignee {
+      float: right;
+      width: 21px;
+      height: 21px;
+      border: 1px solid #ddd;
+      border-width: 0 0 1px 1px;
+      border-radius: 0 0 0 3px;
+      margin-top: -5px;
+      padding: 2px;
+    }
+
+    .assignee img {
+      width: 16px;
+      height: 16px;
+    }
+
+    .info {
+      width: 300px;
+      display: inline-block;
+      min-height: 20px;
+    }
+
+    .title {
+      color: #000;
+      font-size: .8em;
+    }
+
+    .title:hover {
+      text-decoration: underline;
+    }
+
+    .first_page #prev_page, .last_page #next_page {
+      visibility: hidden;
+    }
+
+    #next_page {
+      float: left;
+    }
+
+    #next_page {
+      float: right;
+    }
+
+    #new_issue_container {
+      float: right;
+    }
+
+    #new_issue {
+      float: right;
+      color: #333;
+      height: 24px;
+      line-height: 24px;
+      border: 1px solid #D4D4D4;
+      border-radius: 3px;
+      background: -moz-linear-gradient(#F4F4F4, #ECECEC) repeat scroll 0 0 transparent;
+      text-transform: capitalize;
+      padding: 0 5px;
+      font-size: 0.7em;
+      font-weight: bold;
+    }
+
+    #new_issue:hover {
+      background: -moz-linear-gradient(#599bdc, #3072b3) repeat scroll 0 0 transparent;
+      color: #fff;
+    }
+
+    #filter {
+      position: relative;
+      width: 50%;
+      display: inline-block;
+    }
+
+    #filter h2 {
+      font-size: 0.7em;
+    }
+
+    #labels {
+      position: absolute;
+      top: 15px;
+      width: 150px;
+      display: none;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      padding: 3px;
+      z-index: 10;
+    }
+
+    #labels > li {
+      padding: 3px;
+      font-size: 0.9em;
+      border-bottom: 1px solid #EAEAEA;
+      color: #888;
+      width: 100%;
+    }
+
+    #labels > li:hover {
+      background-color: #ffffcc;
+    }
+
+    #labels > li > a {
+      display: block;
+    }
+
+    #filter:hover #labels {
+      display: block;
+    }
+
