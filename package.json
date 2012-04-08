@@ -11,14 +11,14 @@
       "title": "GitHub Username",
       "description": "Your username on GitHub",
       "type": "string",
-      "value": "stomlinson"
+      "value": ""
     },
     {
       "name": "repo_url",
       "title": "Repo URL",
       "description": "URL of the repo on GitHub",
       "type": "string",
-      "value": "mozilla/browserid"
+      "value": ""
     },
     {
       "name": "page_size",
