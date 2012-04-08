@@ -5,5 +5,28 @@
     "version": "0.1", 
     "fullName": "github-addon", 
     "id": "jid1-HN7ZL1BIoeTqjg", 
-    "description": "a basic add-on"
+    "description": "a basic add-on",
+    "preferences": [{
+      "name": "username",
+      "title": "GitHub Username",
+      "description": "Your username on GitHub",
+      "type": "string",
+      "value": "stomlinson"
+    },
+    {
+      "name": "repo_url",
+      "title": "Repo URL",
+      "description": "URL of the repo on GitHub",
+      "type": "string",
+      "value": "mozilla/browserid"
+    },
+    {
+      "name": "page_size",
+      "title": "Results Per Page",
+      "description": "Number of results to display per page",
+      "type": "string",
+      "value": "20"
+    }
+    ]
+
 }

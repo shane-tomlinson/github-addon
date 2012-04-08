@@ -1,7 +1,8 @@
 self.port.on("initialize", function(data) {
-  var header = document.querySelector("h1 a");
-  header.setAttribute("href", "https://github.com/" + data.repo_url);
-  header.innerHTML = data.repo_url;
+  var anchor = document.querySelector("h1 > a");
+  anchor.setAttribute("href", "https://github.com/" + data.repo_url);
+  anchor.setAttribute("data-right_click_href", "#repo/" + data.repo_url);
+  anchor.innerHTML = data.repo_url;
 
   var newIssue = document.querySelector("#new_issue");
   newIssue.setAttribute("href", "https://github.com/" + data.repo_url + "/issues/new");
@@ -39,22 +40,6 @@ function displayIssues(issues) {
   attachListeners(listEl);
 
   window.scrollTo(0, 0);
-}
-
-function attachListeners(listEl, extraListener) {
-  if(!listEl) return;
-
-  var anchors = listEl.querySelectorAll("a");
-  var len = anchors.length;
-
-  for(var index = 0, anchor; index < len, anchor = anchors[index]; index++) {
-    anchor.addEventListener("click", function(extraListener, event) {
-      event.preventDefault();
-      var href = this.getAttribute("href");
-      self.port.emit("open_link", { href: href });
-      extraListener && extraListener(event);
-    }.bind(anchor, extraListener), false);
-  }
 }
 
 attachListeners(document);
