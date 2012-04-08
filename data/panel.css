@@ -43,6 +43,8 @@
       list-style-type: none;
     }
 
+    input[type=text],
+    input[type=number],
     input[type=search] {
       display: inline-block;
       padding: 4px;
@@ -60,9 +62,17 @@
       color: #000;
     }
 
+    label {
+      color: #333;
+    }
+
     nav > ul > li {
       clear: both;
       margin-top: 5px;
+    }
+
+    p {
+      padding: 5px 10px;
     }
 
     .odd {
@@ -72,7 +82,7 @@
 
     #main_list > li {
       font-size: 0.9em;
-      padding: 5px 0 5px 10px;
+      padding: 5px 10px;
       border-bottom: 1px solid #EAEAEA;
       color: #888;
       clear: both;
@@ -81,6 +91,10 @@
 
     #main_list > li:hover {
       background-color: #ffffcc;
+    }
+
+    #main_list.issues > li {
+      padding: 5px 0 5px 10px;
     }
 
     .labels > li, footer li {
