@@ -1,11 +1,11 @@
 {
     "name": "github-addon", 
     "license": "MPL 2.0", 
-    "author": "", 
-    "version": "0.1", 
+    "author": "Shane Tomlinson - @shane_tomlinson (Twitter), stomlinson (GitHub), shane-tomlinson (GitHub)", 
+    "version": "0.1a", 
     "fullName": "github-addon", 
     "id": "jid1-HN7ZL1BIoeTqjg", 
-    "description": "a basic add-on",
+    "description": "Track your GitHub repos' issues from within Firefox!",
     "preferences": [{
       "name": "username",
       "title": "GitHub Username",

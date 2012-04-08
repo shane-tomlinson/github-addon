@@ -50,12 +50,16 @@
       padding: 4px;
       line-height: 24px;
       font-size: 100%;
-      border: 1px solid rgb(205, 205, 205);
+      border: 1px solid #cdcdcd;
       border-radius: 3px;
       width: 100%;
-      box-shadow: 0px 1px 0px rgb(241, 241, 241), 0px 1px 1px rgb(224, 224, 224) inset;
+      box-shadow: 0px 1px 0px #f1f1f1, 0px 1px 1px #e0e0e0 inset;
       margin-top: 5px;
-      color: rgb(153, 153, 153);
+      color: #999;
+    }
+
+    input.hasValue {
+      color: #555;
     }
 
     input:focus {

@@ -2,12 +2,17 @@ var form = document.querySelector("#preferences");
 
 self.port.on("initialize", function(data) {
   for(var key in data) {
-    console.log(key + ": " + data[key]);
+    updateElWithValue(key, data[key]);
   }
-
-  document.querySelector("#username").value = data.username || "";
-  document.querySelector("#page_size").value = data.page_size || "";
 });
+
+function updateElWithValue(key, value) {
+  var element = document.querySelector("#" + key);
+  if(element) {
+    element.value = value || "";
+    handleInputElement(element);
+  }
+}
 
 form.addEventListener("submit", function(event) {
   event.preventDefault();

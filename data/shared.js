@@ -22,4 +22,21 @@ function attachListeners(listEl, extraListener) {
 
 }
 
+var inputs = document.querySelectorAll("input");
+for(var input, index = 0, len = inputs.length; index < len, input = inputs[index]; index++) {
+  input.addEventListener("keyup", function(event) {
+    handleInputElement(event.target);
+  }, false);
 
+  // Set up the initial classes
+  handleInputElement(input);
+}
+
+function handleInputElement(input) {
+  if(input.value !== "") {
+    input.classList.add("hasValue");
+  }
+  else {
+    input.classList.remove("hasValue");
+  }
+}
