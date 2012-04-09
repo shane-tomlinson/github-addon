@@ -1,7 +1,11 @@
 self.port.on("initialize", function(data) {
-  var header = document.querySelector("h1 a");
-  header.setAttribute("href", "https://github.com/" + data.repo_url);
-  header.innerHTML = data.repo_url;
+  var anchor = document.querySelector("h1 > a");
+  anchor.setAttribute("href", "https://github.com/" + data.repo_url);
+  anchor.setAttribute("data-right_click_href", "#repo/" + data.repo_url);
+  anchor.innerHTML = data.repo_url;
+
+  var newIssue = document.querySelector("#new_issue");
+  newIssue.setAttribute("href", "https://github.com/" + data.repo_url + "/issues/new");
 });
 
 self.port.on("show_issues", function(arg) {
@@ -31,27 +35,40 @@ function displayIssues(issues) {
   var template = document.querySelector("#templateIssue").innerHTML;
   var html = Mustache.render(template, view);
 
-  var listEl = document.querySelector("#issues");
+  var listEl = document.querySelector("#main_list");
   listEl.innerHTML = html;
   attachListeners(listEl);
 
   window.scrollTo(0, 0);
 }
 
-function attachListeners(listEl) {
-  if(!listEl) return;
+attachListeners(document);
 
-  var anchors = listEl.querySelectorAll("a");
-  var len = anchors.length;
-
-  for(var index = 0, anchor; index < len, anchor = anchors[index]; index++) {
-    anchor.addEventListener("click", function(event) {
-      event.preventDefault();
-      var href = this.getAttribute("href");
-      self.port.emit("open_link", { href: href });
-      console.log("click: " + href);
-    }.bind(anchor), false);
+var form = document.querySelector("#searchform");
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+  var searchTerm = document.querySelector("#search").value;
+  if(searchTerm) {
+    self.port.emit("search", { search: searchTerm });
   }
+});
+
+self.port.on("show_labels", function(data) {
+  displayLabels(data.labels || []);
+});
+
+function displayLabels(labels) {
+  var view = { labels: labels };
+  var template = document.querySelector("#templateLabels").innerHTML;
+  var html = Mustache.render(template, view);
+
+  var listEl = document.querySelector("#labels");
+  listEl.innerHTML = html;
+
+  attachListeners(listEl, function(event) {
+    var currLabelEl = document.querySelector("#curr_label");
+    currLabelEl.innerHTML = event.currentTarget.innerHTML;
+    currLabelEl.style.color = event.currentTarget.style.color;
+  });
 }
 
-attachListeners(document);
