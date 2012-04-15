@@ -1,3 +1,5 @@
+var body = document.querySelector("body");
+
 self.port.on("initialize", function(data) {
   var anchor = document.querySelector("h1 > a");
   anchor.setAttribute("href", "https://github.com/" + data.repo_url);
@@ -10,25 +12,32 @@ self.port.on("initialize", function(data) {
 });
 
 self.port.on("show_issues", function(data) {
+  if(data.search_term) {
+    body.classList.add("search");
+  }
+  else {
+    body.classList.remove("search");
+  }
+
   displayIssues(data);
   FooterHacks.calculate();
   attachListeners();
 });
 
 self.port.on("first_page", function() {
-  document.querySelector("body").classList.add("first_page");
+  body.classList.add("first_page");
 });
 
 self.port.on("not_first_page", function() {
-  document.querySelector("body").classList.remove("first_page");
+  body.classList.remove("first_page");
 });
 
 self.port.on("last_page", function() {
-  document.querySelector("body").classList.add("last_page");
+  body.classList.add("last_page");
 });
 
 self.port.on("not_last_page", function() {
-  document.querySelector("body").classList.remove("last_page");
+  body.classList.remove("last_page");
 });
 
 
