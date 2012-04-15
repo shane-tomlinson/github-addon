@@ -93,7 +93,7 @@
       width: 100%;
     }
 
-    #main_list > li:hover {
+    #main_list.highlight > li:hover {
       background-color: #ffffcc;
     }
 
