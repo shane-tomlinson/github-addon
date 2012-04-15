@@ -73,7 +73,13 @@
     {{/issues}}
 
     {{^issues}}
-      This repo has no issues.
+      {{#search_term}}
+        No issues match "{{search_term}}"
+      {{/search_term}}
+
+      {{^search_term}}
+        This repo has no issues.
+      {{/search_term}}
     {{/issues}}
 
   </script>

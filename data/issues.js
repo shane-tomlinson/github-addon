@@ -8,8 +8,8 @@ self.port.on("initialize", function(data) {
   newIssue.setAttribute("href", "https://github.com/" + data.repo_url + "/issues/new");
 });
 
-self.port.on("show_issues", function(arg) {
-  displayIssues(arg.issues || []);
+self.port.on("show_issues", function(data) {
+  displayIssues(data);
   attachListeners();
 });
 
@@ -30,8 +30,8 @@ self.port.on("not_last_page", function() {
 });
 
 
-function displayIssues(issues) {
-  var view = { issues: issues };
+function displayIssues(data) {
+  var view = { issues: data.issues || [], search_term: data.search_term };
   var template = document.querySelector("#templateIssue").innerHTML;
   var html = Mustache.render(template, view);
 
@@ -50,6 +50,10 @@ form.addEventListener("submit", function(event) {
   var searchTerm = document.querySelector("#search").value;
   if(searchTerm) {
     self.port.emit("search", { search: searchTerm });
+  }
+  else {
+    // If no search term, assume no search and go to the "all" label.
+    self.port.emit("open_link", { href: "#label/all" });
   }
 });
 
