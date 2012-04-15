@@ -6,10 +6,12 @@ self.port.on("initialize", function(data) {
 
   var newIssue = document.querySelector("#new_issue");
   newIssue.setAttribute("href", "https://github.com/" + data.repo_url + "/issues/new");
+  FooterHacks.calculate();
 });
 
 self.port.on("show_issues", function(data) {
   displayIssues(data);
+  FooterHacks.calculate();
   attachListeners();
 });
 
