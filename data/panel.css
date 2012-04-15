@@ -17,6 +17,12 @@
       background: -moz-linear-gradient(#FAFAFA, #EAEAEA) repeat scroll 0 0 transparent;
       padding: .5em;
       box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4), 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -93,7 +99,7 @@
       width: 100%;
     }
 
-    #main_list > li:hover {
+    #main_list.highlight > li:hover {
       background-color: #ffffcc;
     }
 
@@ -217,5 +223,13 @@
 
     #filter:hover #labels {
       display: block;
+    }
+
+    .search #paging {
+      /**
+       * Paging is unavailable in search because of limitations of the GitHub
+       * REST API
+       */
+      visibility: hidden;
     }
 

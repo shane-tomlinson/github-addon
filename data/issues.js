@@ -1,3 +1,5 @@
+var body = document.querySelector("body");
+
 self.port.on("initialize", function(data) {
   var anchor = document.querySelector("h1 > a");
   anchor.setAttribute("href", "https://github.com/" + data.repo_url);
@@ -6,32 +8,41 @@ self.port.on("initialize", function(data) {
 
   var newIssue = document.querySelector("#new_issue");
   newIssue.setAttribute("href", "https://github.com/" + data.repo_url + "/issues/new");
+  FooterHacks.calculate();
 });
 
-self.port.on("show_issues", function(arg) {
-  displayIssues(arg.issues || []);
+self.port.on("show_issues", function(data) {
+  if(data.search_term) {
+    body.classList.add("search");
+  }
+  else {
+    body.classList.remove("search");
+  }
+
+  displayIssues(data);
+  FooterHacks.calculate();
   attachListeners();
 });
 
 self.port.on("first_page", function() {
-  document.querySelector("body").classList.add("first_page");
+  body.classList.add("first_page");
 });
 
 self.port.on("not_first_page", function() {
-  document.querySelector("body").classList.remove("first_page");
+  body.classList.remove("first_page");
 });
 
 self.port.on("last_page", function() {
-  document.querySelector("body").classList.add("last_page");
+  body.classList.add("last_page");
 });
 
 self.port.on("not_last_page", function() {
-  document.querySelector("body").classList.remove("last_page");
+  body.classList.remove("last_page");
 });
 
 
-function displayIssues(issues) {
-  var view = { issues: issues };
+function displayIssues(data) {
+  var view = { issues: data.issues || [], search_term: data.search_term };
   var template = document.querySelector("#templateIssue").innerHTML;
   var html = Mustache.render(template, view);
 
@@ -50,6 +61,10 @@ form.addEventListener("submit", function(event) {
   var searchTerm = document.querySelector("#search").value;
   if(searchTerm) {
     self.port.emit("search", { search: searchTerm });
+  }
+  else {
+    // If no search term, assume no search and go to the "all" label.
+    self.port.emit("open_link", { href: "#label/all" });
   }
 });
 

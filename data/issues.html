@@ -28,13 +28,14 @@
     </nav>
   </header>
 
-  <ul id="main_list" class="issues">
+  <ul id="main_list" class="issues highlight">
   </ul>
 
   <footer>
-    <ul>
+    <ul id="paging">
       <li id="prev_page"><a href="#prev_page">Prev Page</a></li>
       <li id="next_page"><a href="#next_page">Next Page</a></li>
+    </ul>
   </footer>
 
   <script id="templateLabels" type="text/html">
@@ -73,7 +74,13 @@
     {{/issues}}
 
     {{^issues}}
-      This repo has no issues.
+      {{#search_term}}
+        No issues match "{{search_term}}"
+      {{/search_term}}
+
+      {{^search_term}}
+        This repo has no issues.
+      {{/search_term}}
     {{/issues}}
 
   </script>
